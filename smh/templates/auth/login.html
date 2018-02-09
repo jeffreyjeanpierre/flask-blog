@@ -1,0 +1,14 @@
+<!Doctype html>
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% endwith %}
+<div class="page-header">
+<h1>Login</h1>
+<div class="col-md-4">
+<form action="/login" method="POST">
+{{ form.email }} {{ form.password }} {{ form.remember_me }}
+{{ form.submit }}
+</form>
+</div>
+{% endblock %}

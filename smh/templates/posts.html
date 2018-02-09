@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %} <a href="/new">create</a>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Public</h1><br>
+      {% if post %}
+        <ul>
+          {% for post in post %}
+            {% if post.rebin == 'false' %}
+              <li>{{ post.title }} | <a href="/edit/{{ post.id }}">edit</a> | <a href="/224/{{ post.id }}">recycle</a></li>
+            {% endif %}
+          {%endfor %}
+        </ul>
+  </div>
+  <div class="col-md-6">
+    <h1>Recycled</h1><br>
+          <ul>
+            {% for post in post %}
+              {% if post.rebin == 'true' %}
+                <li>{{ post.title }} | <a href="/224/{{ post.id }}">unrecycle</a> | <a href="/delete/{{ post.id }}">erase</a></li>
+              {% endif %}
+            {% endfor %}
+  {% endif %}
+          </ul>
+  </div>
+</div>
+{% endwith %}
+{% endblock %}
